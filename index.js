@@ -1,14 +1,11 @@
-const { Server } = require('http');
+require('http').Server((req, res) => {
+  const author = 'glazkopolina'
 
-const s = Server((req, res)=> {
-  const CORS = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
-    'Access-Control-Allow-Headers': 'x-test,Content-Type,Accept,Access-Control-Allow-Headers'
-  }
-  const login = 'glazkopolina';
-
-  res.writeHead(200, { 'Content-Type': 'application/json', ...CORS});
+  res.setHeader('X-Author', author)
+  res.setHeader('Content-Type', 'application/json')
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'x-test,Content-Type,Accept,Access-Control-Allow-Headers')
 
   if (req.url === '/result4/') {
     let body = [];
@@ -24,7 +21,6 @@ const s = Server((req, res)=> {
       }))
     })
   } else {
-    res.end(login)
+    res.end(author)
   }
-});
-s.listen(process.env.PORT)
+}).listen(process.env.PORT)
