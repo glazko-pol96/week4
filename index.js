@@ -7,7 +7,7 @@ const CORS = {
 const login = 'glazkopolina';
 
 const s = Server((req, res)=> {
-  if (req.url === '/reault4/') {
+  if (req.url === '/result4/') {
     res.writeHead(200, { 'Content-Type': 'application/json', ...CORS});
     let body = [];
     req.on('data', (chunk) => {
